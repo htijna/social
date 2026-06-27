@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { complaintAPI, departmentAPI, userAPI, BACKEND_URL } from '../services/api';
+import { complaintAPI, departmentAPI, userAPI, ASSETS_URL, BACKEND_PREFIX } from '../services/api';
 import axios from 'axios';
 import socket from '../services/socket';
 import { 
@@ -49,12 +49,12 @@ export default function AdminDashboard() {
 
   const handleExportCSV = () => {
     const token = localStorage.getItem('token');
-    window.open(`${BACKEND_URL}/api/complaints/export/csv?token=${token}`, '_blank');
+    window.open(`${ASSETS_URL}/api/complaints/export/csv?token=${token}`, '_blank');
   };
 
   const handleExportPDF = () => {
     const token = localStorage.getItem('token');
-    window.open(`${BACKEND_URL}/api/complaints/export/pdf?token=${token}`, '_blank');
+    window.open(`${ASSETS_URL}/api/complaints/export/pdf?token=${token}`, '_blank');
   };
 
   const openActionModal = (c) => {
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
         const formData = new FormData();
         formData.append('image', resolutionFile);
         const token = localStorage.getItem('token');
-        await axios.post(`${BACKEND_URL}/api/complaints/${selectedComplaint._id}/resolution-image`, formData, {
+        await axios.post(`${ASSETS_URL}/api/complaints/${selectedComplaint._id}/resolution-image`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}`
