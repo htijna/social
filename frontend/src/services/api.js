@@ -58,4 +58,6 @@ export const userAPI = {
 };
 
 export { BACKEND_URL };
+export const ASSETS_URL = import.meta.env.PROD ? '/_/backend' : 'http://localhost:5000';
+export const BACKEND_PREFIX = import.meta.env.PROD ? '/_/backend' : '';
 export default api;

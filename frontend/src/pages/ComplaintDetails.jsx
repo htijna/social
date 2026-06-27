@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { complaintAPI, BACKEND_URL } from '../services/api';
+import { complaintAPI, ASSETS_URL } from '../services/api';
 import LeafletMap from '../components/LeafletMap';
 import socket from '../services/socket';
 import { 
@@ -208,7 +208,7 @@ export default function ComplaintDetails({ user }) {
                 {complaint.image ? (
                   <div className="rounded-xl overflow-hidden border border-slate-250 dark:border-slate-800 shadow-inner bg-slate-100 max-h-[300px] flex items-center justify-center">
                     <img
-                      src={`${BACKEND_URL}${complaint.image}`}
+                      src={`${ASSETS_URL}${complaint.image}`}
                       alt="Complaint Evidence"
                       className="w-auto h-full max-h-[300px] object-contain hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
@@ -230,7 +230,7 @@ export default function ComplaintDetails({ user }) {
                 {complaint.resolutionImage ? (
                   <div className="rounded-xl overflow-hidden border border-emerald-300 dark:border-emerald-900 shadow-inner bg-emerald-50/50 max-h-[300px] flex items-center justify-center">
                     <img
-                      src={`${BACKEND_URL}${complaint.resolutionImage}`}
+                      src={`${ASSETS_URL}${complaint.resolutionImage}`}
                       alt="Resolution Proof"
                       className="w-auto h-full max-h-[300px] object-contain hover:scale-105 transition-transform duration-300"
                     />
