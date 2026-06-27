@@ -1,34 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "npm install --prefix frontend",
+  "buildCommand": "npm run build --prefix frontend",
+  "outputDirectory": "frontend/dist",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/server.js"
-    },
-    {
-      "source": "/uploads/(.*)",
-      "destination": "/backend/server.js"
-    },
-    {
-      "source": "/socket.io/(.*)",
-      "destination": "/backend/server.js"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/frontend/$1"
+      "destination": "/index.html"
     }
   ]
 }
